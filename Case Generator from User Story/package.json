@@ -1,0 +1,20 @@
+{
+  "name": "case-generator-from-user-story",
+  "version": "1.0.0",
+  "description": "AI Test Case Generator - Generate Gherkin test cases from user stories using Ollama",
+  "private": true,
+  "scripts": {
+    "setup": "npm install --prefix backend && npm install --prefix frontend && npm run init-db --prefix backend",
+    "install:all": "npm install && npm run setup",
+    "predev": "node scripts/ensure-setup.mjs",
+    "init-db": "npm run init-db --prefix backend",
+    "dev": "concurrently -n backend,frontend -c blue,green \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\"",
+    "dev:backend": "npm run dev --prefix backend",
+    "dev:frontend": "npm run dev --prefix frontend",
+    "build": "npm run build --prefix frontend",
+    "start": "npm run start --prefix backend"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
