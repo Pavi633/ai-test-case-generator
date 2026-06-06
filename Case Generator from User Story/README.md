@@ -214,6 +214,70 @@ As a user, I want to login using my email and password so that I can securely ac
 
 ---
 
+## Architecture Overview
+
+The system follows a full-stack architecture consisting of a React frontend, Express backend, SQLite database, and a locally hosted LLM through Ollama.
+
+### Workflow
+
+1. User enters a user story through the React web interface.
+2. Frontend sends the request to the Express API.
+3. JWT authentication validates the user.
+4. Backend sends the prompt to Ollama (Llama 3).
+5. LLM analyzes the user story and generates test cases.
+6. Generated results are converted into Gherkin format.
+7. Results are stored in SQLite for history tracking.
+8. Dashboard analytics are updated and displayed to the user.
+
+### Components
+
+#### Frontend
+
+* React.js
+* Vite
+* Tailwind CSS
+* Recharts
+
+#### Backend
+
+* Node.js
+* Express.js
+* JWT Authentication
+
+#### AI Layer
+
+* Ollama
+* Llama 3
+
+#### Database
+
+* SQLite (better-sqlite3)
+
+---
+
+## Assumptions
+
+The project assumes that:
+
+* Ollama is installed and running locally.
+* Llama 3 model is downloaded before execution.
+* User stories are provided in understandable English.
+* Users have a modern web browser.
+* Generated test cases are used as a starting point and may require manual review.
+
+---
+
+## Limitations
+
+* Generation speed depends on local system hardware.
+* Llama 3 may take several seconds or minutes for complex user stories.
+* Generated test cases may occasionally require manual refinement.
+* Only English user stories are officially supported.
+* The application currently supports local deployment only.
+* Multi-user collaboration is not supported.
+
+---
+
 ## Future Enhancements
 
 * Role-Based Access Control
